@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador - Proyecto STEAM+T</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+    }
+    header {
+      background: linear-gradient(to right, #00796b, #009688);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #004d40;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+    label {
+      display: inline-block;
+      margin: 10px 10px 5px 0;
+    }
+    input, select {
+      margin-bottom: 15px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    canvas {
+      margin-top: 20px;
+    }
+    footer {
+      background: #004d40;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Simulador de Reducción Tumoral</h1>
+    <p>Proyecto STEAM+T - Modelos y Simulación de Tratamientos</p>
+  </header>
+
+<nav>
+  <a href="index.html">Inicio</a>
+  <a href="STEAM+t-1.html">Artículos</a>
+  <a href="autores 1.html">Autores</a>
+  <a href="tratamientos.html">Tratamientos</a>
+  <a href="analitico.html">Analítico</a>
+  <a href="analitico.html#simulador">Simulador</a>
+</nav>
+
+  <div class="container">
+    <div class="card">
+      <h2>Simulador de reducción tumoral</h2>
+      <p>Selecciona un tratamiento, define el volumen inicial y la cantidad de semanas.</p>
+
+      <label for="tratamiento">Tratamiento: </label>
+      <select id="tratamiento">
+        <option value="Q">Quimioterapia</option>
+        <option value="R">Radioterapia</option>
+        <option value="C">Combinado</option>
+      </select>
+
+      <label for="volumen">Volumen inicial (cm³): </label>
+      <input type="number" id="volumen" value="10" min="1" max="100" />
+
+      <label for="semanas">Número de semanas: </label>
+      <input type="number" id="semanas" value="15" min="1" max="52" />
+
+      <canvas id="grafica" width="600" height="300"></canvas>
+    </div>
+  </div>
+
+  <footer>
+    © Cibercolegio UCN | Proyecto STEAM+T
+  </footer>
+
+  <!-- Librería Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    // Parámetros por tratamiento
+    const coeficientes = {
+      Q: 0.14,
+      R: 0.13,
+      C: 0.38
+    };
+
+    function calcularDatos(tipo, volumenInicial, semanas) {
+      const k = coeficientes[tipo];
+      return Array.from({length: semanas}, (_, i) =>
+        +(volumenInicial * Math.pow(2.72, -k * i)).toFixed(2)
+      );
+    }
+
+    function actualizarGrafica() {
+      const tipo = document.getElementById('tratamiento').value;
+      const volumen = parseFloat(document.getElementById('volumen').value);
+      const semanas = parseInt(document.getElementById('semanas').value);
+      const nuevosDatos = calcularDatos(tipo, volumen, semanas);
+      chart.data.labels = Array.from({length: semanas}, (_, i) => i);
+      chart.data.datasets[0].data = nuevosDatos;
+      chart.update();
+    }
+
+    // Crear gráfico inicial
+    const ctx = document.getElementById('grafica').getContext('2d');
+    let chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: Array.from({length: 15}, (_, i) => i),
+        datasets: [{
+          label: 'Volumen tumoral (cm³)',
+          data: calcularDatos("Q", 10, 15),
+          borderColor: 'rgb(75, 192, 192)',
+          fill: false,
+          tension: 0.2
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true }
+        },
+        scales: {
+          x: { title: { display: true, text: 'Semanas' } },
+          y: { title: { display: true, text: 'Volumen (cm³)' }, beginAtZero: true }
+        }
+      }
+    });
+
+    // Eventos
+    document.getElementById('tratamiento').addEventListener('change', actualizarGrafica);
+    document.getElementById('volumen').addEventListener('input', actualizarGrafica);
+    document.getElementById('semanas').addEventListener('input', actualizarGrafica);
+  </script>
+
+</body>
+</html>

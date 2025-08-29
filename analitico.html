@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto STEAM+T | Apartado Analítico-Matemático</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+    }
+    header {
+      background: linear-gradient(to right, #00796b, #009688);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #004d40;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h2 {
+      color: #00796b;
+      margin-top: 30px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    footer {
+      background: #004d40;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Apartado Analítico-Matemático</h1>
+    <p>Proyecto STEAM+T - Modelos y Simulación de Tratamientos</p>
+  </header>
+
+  <nav>
+  <a href="index.html">Inicio</a>
+  <a href="STEAM+t-1.html">Artículos</a>
+  <a href="tratamientos.html">Tratamientos</a>
+  <a href="autores 1.html">Autores</a>
+  <a href="analitico.html">Analítico</a>
+  <a href="simulador.html">Simulador</a>
+</nav>
+
+  <div class="container">
+    <!-- Introduccion -->
+    <div class="card">
+      <h2>Introduccion</h2>
+      <h3>¿Qué es la quimioterapia y cómo actúa a nivel molecular?</h3>
+      <p>
+        La quimioterapia utiliza medicamentos que circulan por todo el cuerpo para atacar células que se dividen rápidamente, 
+        como las cancerosas. Estos fármacos interfieren en procesos celulares esenciales, como la síntesis de ADN y ARN, 
+        impidiendo que las células tumorales se reproduzcan y provocando su muerte. 
+        Sin embargo, también pueden afectar células sanas de rápida división, lo que explica efectos secundarios como la caída del cabello o náuseas.
+      </p>
+
+      <h3>¿Qué es la radioterapia y cómo afecta las células cancerosas?</h3>
+      <p>
+        La radioterapia utiliza radiación de alta energía para dañar el ADN de las células cancerosas, 
+        impidiendo su capacidad de reproducción y llevando a su muerte. 
+        Aunque también puede afectar células sanas cercanas, estas suelen tener una mejor capacidad de reparación. 
+        La radioterapia se aplica localmente, enfocándose en áreas específicas del cuerpo.
+      </p>
+
+      <h3>¿Qué implica un tratamiento combinado y por qué puede ser más efectivo?</h3>
+      <p>
+        El tratamiento combinado, conocido como quimiorradioterapia, integra quimioterapia y radioterapia para potenciar la eficacia contra ciertos tipos de cáncer. 
+        La quimioterapia puede sensibilizar las células cancerosas a la radiación, mejorando los resultados del tratamiento. 
+        Estudios han demostrado que esta combinación puede aumentar la tasa de supervivencia en algunos cánceres, como el de pulmón en etapa 3.
+      </p>
+
+      <!-- Imagen -->
+      <img src="https://lh3.googleusercontent.com/pw/AP1GczNYYQhfsGwIauacSgEJKFbYV3L9bhqMsSoeYUDVd_5o8B_7sspdp1JEcplDsmwgOFbB1GX1Tpp98K9G588zT2vyK2cJtxRrkn844ATcn_jvkN5uOqt_axYY-uVioPS7IDNR6E23N47AA2Ff9ecTGIiV=w1558-h362-s-no-gm?authuser=0" alt="Tratamiento oncológico" width="100%">
+    </div>
+</div>
+
+    <!-- Proceso -->
+    <div class="container">
+      <div class="card">
+      <h2>Proceso</h2>
+      <p>
+        En un comienzo, trabajamos con tablas clínicas del artículo de <i>Radiation Oncology (2013)</i>, 
+        donde se mostraba cómo la quimioterapia reducía la dosis de radiación recibida por órganos como el pulmón, corazón y esófago. 
+        Aunque estas tablas no mostraban directamente la reducción del tumor semana a semana, 
+        se mencionaba que tras dos ciclos de quimioterapia el volumen tumoral (GTV) se reducía en un 69.6%, 
+        mientras que con un solo ciclo la reducción era del 52.1%.
+      </p>
+      <p>
+        Este dato clínico nos permitió inferir el comportamiento del tumor durante las primeras semanas del tratamiento. 
+        Con base en esa evidencia, construimos nuestras propias tablas simuladas, partiendo de un volumen inicial de 10 cm³. 
+        Creamos modelos para tres tipos de tratamiento (quimioterapia sola, radioterapia sola y tratamiento combinado), 
+        ajustando los valores para que reflejaran la reducción porcentual real descrita en el estudio.
+      </p>
+      <p>
+        Construimos funciones cuadráticas con el fin de representar las tasas de reducción tumoral, donde X representa el número de semanas 
+        y Y el tamaño del tumor en cm³. Estas funciones nos permitieron graficar y comparar la evolución del volumen tumoral bajo distintos tipos de tratamiento, 
+        basándonos en datos clínicos como la reducción del 69.6% tras dos ciclos de quimioterapia.
+      </p>
+      <p>
+        Sin embargo, concluimos que estas tablas son una simulación basada en supuestos, ya que en contextos reales 
+        las reducciones tumorales no son perfectamente predecibles, ni siguen patrones estrictamente lineales o cuadráticos. 
+        La respuesta de un tumor al tratamiento depende de múltiples factores clínicos, biológicos y genéticos que escapan a una simple ecuación matemática.
+      </p>
+
+      <!-- Imagen para apartado 2 -->
+      <img src="https://lh3.googleusercontent.com/pw/AP1GczOuy3gXuSJrUtnWvyZ43UdWo_HBS-THY53OX44Tdmofm9D6DwFhgwvNE6KXB8rYaB0zD7d03Fx8_ZZNpzMUrzg0-IVKFLbmMeIKzUCdW6RKj1sw63aBHqWJMEQ2liBjMwXCNlu1l47VP3QzeFFyo4Pm=w995-h607-s-no-gm?authuser=0" alt="Gráficas de reducción tumoral en distintos tratamientos" width="100%">
+    </div>
+  </div>
+  </div>
+
+  <footer>
+    © Cibercolegio UCN | Proyecto STEAM+T
+  </footer>
+
+</body>
+</html>

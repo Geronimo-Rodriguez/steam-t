@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Autores - Proyecto STEAM+T</title>
+  <style>
+    /* Paleta base */
+    :root{
+      --azul-oscuro:#283593;
+      --azul-medio:#3949ab;
+      --azul-claro:#c5cae9;
+      --fondo:#f5f6fa;
+      --texto:#333;
+      --blanco:#fff;
+    }
+
+    /* Reset + tipografía */
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Segoe UI", Arial, sans-serif;
+      background:var(--fondo);
+      color:var(--texto);
+    }
+
+    /* Encabezado */
+    header{
+      background:linear-gradient(135deg, var(--azul-oscuro), #5c6bc0);
+      color:#fff;
+      text-align:center;
+      padding:2.25rem 1rem;
+    }
+    header h1{margin:0 0 .5rem 0; font-size:2.2rem}
+    header p{margin:0; opacity:.95}
+
+    /* Navegación */
+    nav{
+      background:var(--azul-medio);
+      text-align:center;
+      padding:.8rem;
+    }
+    nav a{
+      color:#fff; text-decoration:none; margin:0 1rem; font-weight:700;
+    }
+    nav a:hover{ color:var(--azul-claro); }
+
+    /* Layout principal */
+    main{ max-width:1100px; margin:0 auto; padding:2rem 1rem; }
+
+    .autores{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:2rem;
+    }
+
+    .autor{
+      background:var(--blanco);
+      border-radius:14px;
+      box-shadow:0 8px 24px rgba(0,0,0,.08);
+      overflow:hidden;
+      transition:transform .15s ease, box-shadow .15s ease;
+      text-align:center;
+      padding-bottom:1rem;
+    }
+    .autor:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(0,0,0,.12);
+    }
+
+    .autor .foto{
+      width:100%;
+      aspect-ratio: 4/3;          /* recorte elegante */
+      object-fit:cover;            /* llena sin deformar */
+      display:block;
+    }
+
+    
+    .autor h2{
+      color:var(--azul-oscuro);
+      font-size:1.35rem;
+      margin:1rem .75rem .25rem;
+    }
+
+    .rol{
+      margin:.25rem .75rem 1rem;
+      color:#556;
+    }
+
+    footer{
+      background:var(--azul-oscuro);
+      color:var(--azul-claro);
+      text-align:center;
+      padding:1rem;
+      margin-top:40px;
+    }
+
+    /* Accesibilidad: foco visible */
+    a:focus{ outline:3px solid var(--azul-claro); outline-offset:2px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Autores</h1>
+    <p>Quienes aportaron al conocimiento de este proyecto</p>
+  </header>
+
+<nav>
+  <a href="index.html">Inicio</a>
+  <a href="STEAM+t-1.html">Artículos</a>
+  <a href="autores 1.html">Autores</a>
+  <a href="tratamientos.html">Tratamientos</a>
+  <a href="analitico.html">Analítico</a>
+  <a href="analitico.html#simulador">Simulador</a>
+</nav>
+
+  <main>
+    <section class="autores">
+      <!-- LUCIA -->
+      <article class="autor">
+        <img class="foto" src="https://lh3.googleusercontent.com/pw/AP1GczMahwGnvU3axasc4Utsnfafp792nKFYbc2m-1yIOhfXDE9fpR17AApfJgg9NgQLugpIesbHd3ATPInoaQxSkVH24Rl1feS6JB6N04IUlJrtWo8-I2as9fkpYmVvLgnyvD8ZR_uJ8cUza74hAtYLcsUC=w425-h945-s-no-gm?authuser=0" alt="Fotografía de Lucia Herrera Arango" loading="lazy">
+        <h2>Lucia Herrera Arango</h2>
+        <p class="rol">Encargada de la información</p>
+      </article>
+
+      <!-- GERÓNIMO -->
+      <article class="autor">
+        <img class="foto" src="https://lh3.googleusercontent.com/pw/AP1GczMJPpj8gtCiOR6PQ9_v6ti7CZdPgCqK1cY9oWSFnNBhzF4o2EiqyuOLi-LhjIbSOa7hSgXdOvjhYUSO9cwyxoPF4XTQoWsf8_BHPkdIOPFy7OMQGGHDr-UgtGNALCtgle1LDX-NIp0Ny5H2OHVIS3Et=w709-h945-s-no-gm?authuser=0" alt="Fotografía de Geronimo Gonzalez Rodriguez" loading="lazy">
+        <h2>Geronimo Gonzalez Rodriguez</h2>
+        <p class="rol">Encargado de la aplicación</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    &copy; Cibercolegio UCN | Proyecto STEAM+T
+  </footer>
+
+</body>
+</html>
